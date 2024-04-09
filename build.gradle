@@ -17,24 +17,30 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
+    implementation 'io.github.bonigarcia:webdrivermanager:5.7.0'
+
+
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
 
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
-    implementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.19.1'
+
 
     // https://mvnrepository.com/artifact/org.testng/testng
-    testImplementation 'org.testng:testng:7.8.0'
+    testImplementation 'org.testng:testng:7.9.0'
+
 
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
-    implementation 'io.cucumber:cucumber-java:7.14.1'
+    implementation 'io.cucumber:cucumber-java:7.16.1'
+
 
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit
-    testImplementation 'io.cucumber:cucumber-junit:7.14.1'
+    testImplementation 'io.cucumber:cucumber-junit:7.16.1'
 
 }
 
 tasks.named('test') {
-    // Use JUnit Platform for unit tests.
-    useJUnitPlatform()
+    systemProperty "cucumber.options", System.getProperty("cucumber.options")
 }
