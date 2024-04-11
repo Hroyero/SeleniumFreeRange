@@ -18,6 +18,8 @@ public void setUp(){
     driver = new ChromeDriver();
 }
 
+
+
 @Test
 public void navegamosAFreeRangeTesters(){
     driver.get("https://www.freerangetesters.com");

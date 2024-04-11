@@ -29,7 +29,7 @@ dependencies {
 
 
     // https://mvnrepository.com/artifact/org.testng/testng
-    testImplementation 'org.testng:testng:7.9.0'
+    testImplementation 'org.testng:testng:7.4.0'
 
 
     // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
@@ -42,5 +42,6 @@ dependencies {
 }
 
 tasks.named('test') {
-    systemProperty "cucumber.options", System.getProperty("cucumber.options")
+    systemProperty "cucumber.options", 
+    System.getProperty("cucumber.options")
 }
