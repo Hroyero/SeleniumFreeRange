@@ -3,6 +3,7 @@ package pages;
 // Importaciones necesarias
 import java.time.Duration;
 import java.util.List;
+import java.util.ArrayList;
  
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -54,7 +55,7 @@ public class BasePage {
         driver.get(url);
     }
  
-    //Método estático para cerrar la instancia del driver. 
+    // Método estático para cerrar la instancia del driver.
     public static void closeBrowser() {
         driver.quit();
     }
@@ -69,29 +70,42 @@ public class BasePage {
         Find(locator).click();
     }
  
-    public void write(String locator, String keysToSend){
+    public void write(String locator, String keysToSend) {
         Find(locator).clear();
         Find(locator).sendKeys(keysToSend);
     }
  
-    public void selectFromDropdownByValue(String locator, String value){
+    public void selectFromDropdownByValue(String locator, String value) {
         Select dropdown = new Select(Find(locator));
  
         dropdown.selectByValue(value);
     }
  
-    public void selectFromDropdownByIndex(String locator, Integer index){
+    public void selectFromDropdownByIndex(String locator, Integer index) {
         Select dropdown = new Select(Find(locator));
  
         dropdown.selectByIndex(index);
     }
  
-    public int dropdownSize(String locator){
+    public int dropdownSize(String locator) {
         Select dropdown = new Select(Find(locator));
  
         List<WebElement> dropdownOptions = dropdown.getOptions();
  
         return dropdownOptions.size();
+    }
+ 
+    public List<String> getDropdownValues(String locator) {
+        Select dropdown = new Select(Find(locator));
+ 
+        List<WebElement> dropdownOptions = dropdown.getOptions();
+        List<String> values = new ArrayList<>();
+        for (WebElement option : dropdownOptions) {
+            values.add(option.getText());
+        }
+ 
+        return values;
+ 
     }
  
 }
